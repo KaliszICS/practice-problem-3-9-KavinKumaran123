@@ -12,27 +12,25 @@ public class PracticeProblem {
 	public static String[] towerOfHanoi(int n) {
 		ArrayList<String> result = new ArrayList<>();
 		
-		// Start from Left (L) → Right (R) using Middle (M)
+		// Move from Left (L) → Right (R) using Middle (M)
 		solve(n, 'L', 'R', 'M', result);
 		
-		// Convert ArrayList to String[]
 		return result.toArray(new String[0]);
 	}
 
 	private static void solve(int n, char from, char to, char helper, ArrayList<String> result) {
 		if (n == 0) return;
 
-		// Step 1: move n-1 disks to helper
+		// Move n-1 disks from "from" → "helper"
 		solve(n - 1, from, helper, to, result);
 
-		// Step 2: move largest disk
+		// Move largest disk from "from" → "to"
 		result.add("" + from + to);
 
-		// Step 3: move n-1 disks to destination
+		// Move n-1 disks from "helper" → "to"
 		solve(n - 1, helper, to, from, result);
 	}
 
-	// Empty placeholders (leave these as is if not needed)
 	public static void q1() {}
 	public static void q2() {}
 	public static void q3() {}
